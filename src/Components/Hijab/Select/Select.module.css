@@ -1,0 +1,15 @@
+.select {
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid #b79b6c;
+
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  transition: all 250ms ease;
+}
+
+.select:focus {
+  border: none;
+  border-bottom: 2px solid #b79b6c;
+  box-shadow: none;
+}

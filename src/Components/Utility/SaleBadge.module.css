@@ -1,0 +1,16 @@
+.badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  z-index: 100;
+  background-color: #b79b6c;
+  color: #fff;
+  min-width: 70px;
+  height: 35px;
+  border-radius: 5px;
+  /* font-weight: 300; */
+  letter-spacing: 0.15em;
+}

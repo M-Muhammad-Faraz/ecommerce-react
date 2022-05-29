@@ -1,0 +1,12 @@
+.primaryClr {
+  color: #b79b6c;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+a.Links {
+  transition: transform 250ms ease-in;
+}
+a.Links:hover {
+  color: #baac97 !important;
+  transform: translateX(5px);
+}

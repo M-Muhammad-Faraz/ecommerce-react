@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
+nav div {
+  margin: 0 5px;
+}
+.navibar {
+  background-color: transparent;
+  transition: all 1000ms ease;
+}
+
+.navibar.active {
+  /* background-color: pink; */
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5),
+    2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+  font-family: "Dancing Script", cursive;
+  padding-top: 6px;
+  font-size: 2.75em;
+}
+.logo span {
+  font-family: "Dancing Script", cursive;
+  color: #b79b6c;
+}
+.mainNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mainNav li {
+  margin: 0 10px;
+}
+.mainNav a,
+.accAcart a {
+  text-decoration: none;
+  color: #32353c;
+}
+.langAndSerc {
+  position: relative;
+  max-width: 25em;
+  width: 14em;
+}
+.lang {
+  align-self: center;
+}
+.lang::after {
+  padding: 0 0 0 0.5em;
+  font-size: small;
+  content: "⯆";
+  color: #b79b6c;
+}
+.notify {
+  font-size: 0.55em;
+  position: absolute;
+  top: 0;
+}
+.account {
+}
+.cart {
+  padding-bottom: 6px;
+  font-size: 1.75em;
+}
+
+.search {
+  color: #32353c;
+}
+
+.search.active {
+  position: absolute;
+  color: #32353c;
+}
+.search.active svg {
+  display: none;
+}
+.input {
+  display: none;
+}
+
+.input.active {
+  border: none;
+  border-bottom: 2px solid #b79b6c;
+  display: inline-block;
+  background-color: transparent;
+  animation: inputAnime 250ms ease-in;
+}
+
+@keyframes inputAnime {
+  0% {
+    width: 0em;
+  }
+  100% {
+    width: 12em;
+  }
+}

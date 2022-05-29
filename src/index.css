@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Montserrat&family=Poppins&family=Ubuntu:ital@1&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  color: #32353c;
+}
+.row {
+  --bs-gutter-x: 0;
+}
+.swiper-pagination-bullet {
+  transform: translateX(10px) !important ;
+  width: 3em !important;
+  border-top-left-radius: 3px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 3px !important;
+  border-bottom-right-radius: 0px !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #b79b6c !important;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #b79b6c;
+  border: 2px solid #b79b6c;
+}
+body {
+  overflow-x: hidden;
+}

@@ -1,0 +1,78 @@
+.mh50 {
+  max-height: 100vh;
+}
+.oh {
+  overflow: hidden;
+}
+.gg {
+  background-color: aquamarine;
+}
+.carouItem img {
+  width: 100%;
+  height: 100%;
+  /* object-position: right; */
+  object-fit: cover;
+}
+.viewOnMarket {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.42);
+  transition: opacity 250ms;
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewOnMarket.hidden {
+  opacity: 0;
+}
+span.btn {
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+span.btn a {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform 0.25s;
+}
+span.btn a:before {
+  content: "INTERESTED?";
+}
+span.btn a:after {
+  content: "SHOP NOW";
+}
+span.btn a:before,
+span.btn a:after {
+  /* border: 5px solid hsl(37, 38%, 69%); */
+  font-weight: bold;
+  position: absolute;
+  height: 55px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+span.btn a:before {
+  color: #fff;
+  background: #b79b6c;
+  transform: rotateY(0deg) translateZ(25px);
+}
+span.btn a:after {
+  background-color: #fff;
+  color: #b79b6c;
+  transform: rotateX(90deg) translateZ(25px);
+}
+span.btn a:hover {
+  transform: translateZ(-25px) rotateX(-90deg);
+}

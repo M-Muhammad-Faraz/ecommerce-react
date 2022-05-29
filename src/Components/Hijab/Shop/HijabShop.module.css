@@ -1,0 +1,14 @@
+.productsGrid {
+  display: grid;
+  gap: 3vw;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.productsGrid > div {
+  height: 370px;
+}
+.viewBar {
+  height: 20vh;
+}
+.sort {
+  width: max-content;
+}

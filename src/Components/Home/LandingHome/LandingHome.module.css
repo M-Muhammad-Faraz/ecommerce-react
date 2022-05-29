@@ -1,0 +1,76 @@
+.landingHome {
+  height: 100vh;
+}
+button.nextbtn {
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  /* background-color: #5de6de; */
+  background-image: linear-gradient(315deg, #b79b6c 0%, #e6c285 74%);
+  border: none;
+  border-radius: 50%;
+  transition: 200ms;
+  transform: rotate(180deg);
+}
+
+button.nextbtn svg {
+  fill: white;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+button.nextbtn:before {
+  content: "Next";
+  position: absolute;
+  transform: translateX(-50%) translateY(-60px) rotate(180deg);
+  font-size: 15px;
+  transition: 200ms;
+  color: transparent;
+  font-weight: bold;
+}
+
+button.nextbtn:hover {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  width: 70px;
+  height: 70px;
+}
+
+button.nextbtn:hover::before {
+  color: #b79b6c;
+}
+
+button.nextbtn:hover svg {
+  animation: bounce 2s infinite linear;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+  25% {
+    transform: translateX(-50%) translateY(-65%);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+  75% {
+    transform: translateX(-50%) translateY(-35%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+button.nextbtn:focus {
+  outline: none;
+}
+.btnPos {
+  z-index: 10000;
+  margin: 0;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

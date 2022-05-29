@@ -1,0 +1,18 @@
+.icon svg {
+  width: 55px;
+  height: 55px;
+}
+.icon {
+  width: 60px;
+  height: 60px;
+
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.5em;
+}
+
+.subTitle {
+  font-size: 1.15em;
+}

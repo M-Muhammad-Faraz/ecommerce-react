@@ -1,0 +1,61 @@
+.Disp {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-image: url("../../../Assets/img/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.DispOverlay {
+  width: 100vw;
+  height: 80vh;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.103);
+}
+
+.inTouchCard {
+  width: 60vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5),
+    2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.inTouchCard h3 {
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 2em;
+}
+.inTouchCard p {
+  font-size: 1.15em;
+  margin: 20px 0;
+}
+
+.subscribe {
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+}
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: inherit;
+  margin: auto;
+
+  width: 25vw;
+}
+.inputs input {
+  width: 110%;
+  padding: 13.25px 8px;
+  border: none;
+  border: 1px solid rgba(136, 136, 136, 0.649);
+}

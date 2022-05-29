@@ -1,0 +1,46 @@
+.imgHolder {
+  position: relative;
+  max-height: 50vh;
+  width: 75%;
+  /* height: 75%; */
+}
+.overlay {
+  padding: 20px 0;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.198);
+  z-index: 10;
+  opacity: 1;
+  transition: opacity 250ms ease;
+}
+.hidden.overlay {
+  opacity: 0;
+}
+.imgHolder img {
+  width: 100%;
+  height: 100%;
+}
+.details {
+  padding: 0 0 0 12.5%;
+}
+.categories {
+  font-size: 0.75em;
+}
+.title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.oldPrice {
+  margin-right: 5px;
+  font-size: 0.85em;
+  text-decoration: line-through;
+  color: rgb(166, 165, 165);
+}
+.newPrice {
+  font-size: 0.95em;
+  font-weight: bold;
+}
