@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import Product from "../Product/Product";
 import classes from "./HijabShop.module.css";
 import imag from "./300x350.png";
 import Select from "../Select/Select";
-const HijabShop = ({
-  products,
-  paginate,
-  productsSize,
-  productsPerPage,
-  sorting,
-  setPostPerPage,
-}) => {
+import { ProductsContext } from "../ProductsContext";
+const HijabShop = ({ products }) => {
+  const getprops = useContext(ProductsContext);
+
   const sortingOptions = [
     { value: 0, label: "Sort in Alphabetical Order(a-z)" },
     { value: 1, label: "Sort in Alphabetical Order(z-a)" },
@@ -29,18 +25,18 @@ const HijabShop = ({
     <div className="col">
       <div className={"d-flex justify-content-between " + classes.viewBar}>
         <div>
-          <Select func={sorting} options={sortingOptions} head={"Sort by"} />
+          <Select
+            func={getprops.sort}
+            options={sortingOptions}
+            head={"Sort by"}
+          />
         </div>
         <div className="d-flex">
           <div>
             <div className="d-flex align-items-center">
               <div>show</div>
               <div>
-                <Select
-                  func={setPostPerPage}
-                  options={showElemOptions}
-                  head={6}
-                />
+                <Select func={() => {}} options={showElemOptions} head={6} />
               </div>
             </div>
           </div>
@@ -55,9 +51,9 @@ const HijabShop = ({
       <div style={{ height: "10vh" }}></div>
       <div className={classes.pagination}>
         <Pagination
-          paginate={paginate}
-          totalProducts={productsSize}
-          productsPerPage={productsPerPage}
+          paginate={getprops.paginate}
+          totalProducts={getprops.filteredProducts.length}
+          productsPerPage={6}
         />
       </div>
     </div>

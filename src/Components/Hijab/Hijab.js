@@ -2,9 +2,10 @@ import React, { useEffect, useState, useReducer } from "react";
 import data from "./MOCKDATA";
 import HijabShop from "./Shop/HijabShop";
 import Sidebar from "./Sidebar/Sidebar.js";
-
+import { ProductsContext } from "./ProductsContext";
 const Hijab = () => {
   const [_, forceUpdate] = useReducer((x) => x + 1, 0); //update state
+
   const [products, setProducts] = useState(data);
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,15 +75,20 @@ const Hijab = () => {
       <div className="container">
         <div style={{ width: "100vw", height: "15vh" }}></div>
         <div className="row">
-          <Sidebar allprods={products} setProducts={filter} />
-          <HijabShop
-            paginate={paginate}
-            products={[...getCurrentProducts()]}
-            productsPerPage={productsPerPage}
-            productsSize={filteredProducts.length}
-            sorting={sort}
-            setPostPerPage={PostPerPage}
-          />
+          <ProductsContext.Provider
+            value={{
+              paginate: paginate,
+              productsPerPage: productsPerPage,
+              products: products,
+              filteredProducts: filteredProducts,
+              sort: sort,
+              setProducts: filter,
+              forceUpdate: forceUpdate,
+            }}
+          >
+            <Sidebar />
+            <HijabShop products={[...getCurrentProducts()]} />
+          </ProductsContext.Provider>
         </div>
       </div>
     </div>
