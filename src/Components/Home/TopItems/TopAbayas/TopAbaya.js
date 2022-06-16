@@ -8,7 +8,6 @@ import Rotate from "react-reveal/Rotate";
 
 import img from "./shutterstock_1245718864.jpg";
 const TopAbaya = ({ item }) => {
-  const [hovering, setHovering] = useState(false);
   return (
     <div
       className="position-relative"
@@ -24,7 +23,7 @@ const TopAbaya = ({ item }) => {
           <Rotate top left>
             <div
               className={
-                "col-4 d-flex justify-content-center flex-column " +
+                "col-xl-4 d-flex justify-content-center flex-column " +
                 classes.details
               }
             >
@@ -38,12 +37,12 @@ const TopAbaya = ({ item }) => {
             </div>
           </Rotate>
           <Rotate top left delay={250}>
-            <div className="col-4 d-flex justify-content-center">
+            <div className="col-xl-4 d-flex justify-content-center">
               <SecondaryItem item={item.secondaryProduct} />
             </div>
           </Rotate>
           <Rotate top right delay={500}>
-            <div className="col-4 d-flex justify-content-center">
+            <div className="col-xl-4 d-flex justify-content-center">
               <PrimaryItem item={item.primaryProduct} />
             </div>
           </Rotate>

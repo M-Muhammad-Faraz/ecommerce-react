@@ -19,7 +19,7 @@ const StayInTouch = () => {
       <div className={classes.DispOverlay}></div>
       <Fade bottom>
         <div className={classes.inTouchCard}>
-          <div className={classes.subscribe}>
+          <div className={"container " + classes.subscribe}>
             <h3>Let's stay in touch</h3>
             <div>
               <p>

@@ -5,7 +5,6 @@ import MultiRangeSlider from "../Slider/MultiRangeSlider";
 import { ProductsContext } from "../../ProductsContext";
 
 const MainAccordion = () => {
-  // const [runner, setRunner] = useState(false);
   const getprops = useContext(ProductsContext);
   const changer = useCallback(
     (minmax) => {

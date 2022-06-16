@@ -38,6 +38,7 @@ const Carousal = ({ carousalItems }) => {
                 onMouseLeave={() => {
                   setView(false);
                 }}
+                className={classes.imgContainer}
               >
                 <div
                   className={

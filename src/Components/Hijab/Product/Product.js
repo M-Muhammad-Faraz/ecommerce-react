@@ -1,49 +1,64 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./Product.module.css";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import StarsStatic from "../../Home/CustomerReview/StarsStatic";
-const Product = ({ product, img }) => {
-  const [heart, setHeart] = useState(false);
+import { urlFor } from "../../../lib/client";
+import { useParams } from "react-router-dom";
+import { useData } from "../../Utility/AllProdsProvider";
+import ProductDetail from "./ProductDetail";
+
+const Product = () => {
+  const [loader, setLoader] = useState(true);
+  const { slug } = useParams();
+  const [imgs, setImgs] = useState("");
+  const getprops = useData();
+  const data = getprops.data;
+  const [product, setProduct] = useState({});
+  useEffect(() => {
+    data.forEach((element) => {
+      if (element.slug.current == slug) {
+        setProduct(element);
+        setImgs(element.image ? urlFor(element.image[0]) : "");
+      }
+      setLoader(false);
+    });
+  }, [data, product]);
   return (
-    <div className={classes.Product}>
-      <div className={classes.imgHolder}>
-        {product.sale ? <div>-{product.sale}%</div> : <></>}
-        <img src={img} alt="" />
-      </div>
-      <div className={classes.ProductDetails}>
+    <>
+      {loader ? (
         <div
-          className={classes.heart}
-          onClick={() => {
-            setHeart(!heart);
-          }}
+          style={{ height: "100vh" }}
+          className="d-flex align-items-center justify-content-center"
         >
-          {heart ? (
-            <AiFillHeart fill="#b79b6c" />
-          ) : (
-            <AiOutlineHeart fill="#b79b6c" />
-          )}
+          loading
         </div>
-        <div className={classes.category}>{product.category}</div>
-        <div className={classes.prodName}>{product.prodName.toUpperCase()}</div>
-        <div className="mb-1">
-          <StarsStatic color="#b79b6c" rate={product.rating} />
-        </div>
-        <div className={classes.price}>
-          {product.sale ? (
-            <div className={classes.saleExist}>
-              <span>Rs {product.price}</span>
-              <div>
-                Rs {product.price - (product.price * product.sale) / 100}
+      ) : (
+        <>
+          <div style={{ height: "15vh" }}></div>
+          <div className="container">
+            <div className="row">
+              <div className="col-4">
+                <div>
+                  <img
+                    src={imgs}
+                    width="300px"
+                    height={"400px"}
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div></div>
+              </div>
+              <div className="col-8">
+                <ProductDetail
+                  name={product.name}
+                  sale={product.sale}
+                  price={product.price}
+                  details={product.details}
+                />
               </div>
             </div>
-          ) : (
-            <>
-              <div>Rs {product.price}</div>
-            </>
-          )}
-        </div>
-      </div>
-    </div>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

@@ -35,7 +35,7 @@ const PrimaryItem = ({ item }) => {
               <div className="mx-1"></div>
               <PrimaryBtn onClick={() => {}}>Save</PrimaryBtn>
               <div className="mx-2"></div>
-              <PrimaryBtn onClick={() => {}}>Quick Preview</PrimaryBtn>
+              <PrimaryBtn onClick={() => {}}>Preview</PrimaryBtn>
               <div className="mx-1"></div>
             </div>
           </div>

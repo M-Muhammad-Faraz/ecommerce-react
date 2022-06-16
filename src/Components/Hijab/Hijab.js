@@ -1,57 +1,45 @@
-import React, { useEffect, useState, useReducer } from "react";
-import data from "./MOCKDATA";
+import React, { useState, useReducer, useCallback, useEffect } from "react";
 import HijabShop from "./Shop/HijabShop";
 import Sidebar from "./Sidebar/Sidebar.js";
-import { ProductsContext } from "./ProductsContext";
+import { ProductsContext, useProductData } from "./ProductsContext";
 const Hijab = () => {
+  const data = useProductData();
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  useEffect(() => {
+    setProducts(data.products);
+    setFilteredProducts(data.products);
+  }, [data]);
+
   const [_, forceUpdate] = useReducer((x) => x + 1, 0); //update state
-
-  const [products, setProducts] = useState(data);
-  const [filteredProducts, setFilteredProducts] = useState(products);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(6);
-  const PostPerPage = (v) => {
-    console.log("ok");
-    setProductsPerPage(v);
-  };
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const [productsPerPage] = useState(6);
 
-  //get current posts
-  const getCurrentProducts = () => {
-    const indexOfLastProduct = currentPage * productsPerPage;
-    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = filteredProducts.slice(
-      indexOfFirstProduct,
-      indexOfLastProduct
-    );
-    return currentProducts;
-  };
   const sort = (option) => {
     if (option == 0) {
       const sortinAZ = products.sort((a, b) => {
-        return a.prodName.localeCompare(b.prodName);
+        return a.name.localeCompare(b.name);
       });
-      setProducts(sortinAZ);
+      setFilteredProducts(sortinAZ);
       forceUpdate();
     } else if (option == 1) {
       const sortinZA = products.sort((a, b) => {
-        if (a.prodName > b.prodName) {
+        if (a.name > b.name) {
           return -1;
         }
-        if (a.prodName < b.prodName) {
+        if (a.name < b.name) {
           return 1;
         }
         return 0;
       });
-      setProducts(sortinZA);
+      setFilteredProducts(sortinZA);
+
       forceUpdate();
     } else if (option == 2) {
       const sortByRating = products.sort((a, b) => {
         return a.rating - b.rating;
       });
-      setProducts(sortByRating);
+      setFilteredProducts(sortByRating);
       forceUpdate();
     } else if (option == 3) {
       const sortByPrice = products.sort((itema, itemb) => {
@@ -61,7 +49,7 @@ const Hijab = () => {
           (itemb.price - itemb.price * (itemb.sale / 100))
         );
       });
-      setProducts(sortByPrice);
+      setFilteredProducts(sortByPrice);
       forceUpdate();
     }
   };
@@ -70,28 +58,55 @@ const Hijab = () => {
     forceUpdate();
   };
 
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  //get current posts
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+  // console.log(data);
   return (
-    <div>
-      <div className="container">
-        <div style={{ width: "100vw", height: "15vh" }}></div>
-        <div className="row">
-          <ProductsContext.Provider
-            value={{
-              paginate: paginate,
-              productsPerPage: productsPerPage,
-              products: products,
-              filteredProducts: filteredProducts,
-              sort: sort,
-              setProducts: filter,
-              forceUpdate: forceUpdate,
-            }}
-          >
-            <Sidebar />
-            <HijabShop products={[...getCurrentProducts()]} />
-          </ProductsContext.Provider>
+    <>
+      {data.loading ? (
+        <div>
+          <div className="container">
+            <div style={{ height: "15vh" }}></div>
+            <div className="row">
+              <ProductsContext.Provider
+                value={{
+                  paginate: paginate,
+                  productsPerPage: productsPerPage,
+                  products: products,
+                  filteredProducts: filteredProducts,
+                  sort: sort,
+                  setProducts: filter,
+                }}
+              >
+                <Sidebar />
+                <HijabShop
+                  products={[...currentProducts]}
+                  allprods={products}
+                />
+              </ProductsContext.Provider>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <div>
+          <div
+            style={{ height: "100vh" }}
+            className="d-flex align-items-center justify-content-center"
+          >
+            Loading
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

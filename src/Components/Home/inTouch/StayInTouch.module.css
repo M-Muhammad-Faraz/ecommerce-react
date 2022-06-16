@@ -48,10 +48,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: inherit;
-  margin: auto;
-
-  width: 25vw;
 }
 .inputs input {
   width: 110%;
